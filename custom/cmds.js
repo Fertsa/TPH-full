@@ -1,8 +1,123 @@
+    /*********************************************************
+	 *Bandi's F
+    /*********************************************************/
+if (typeof spamroom == "undefined") {
+        spamroom = new Object();
+}
+if (!Rooms.rooms.spamroom) {
+        Rooms.rooms.spamroom = new Rooms.ChatRoom("spamroom", "spamroom");
+        Rooms.rooms.spamroom.isPrivate = true;
+}
 var commands = exports.commands = {
+	spam: 'spamroom',
+	spammer: 'spamroom',
+	spamroom: function(target, room, user, connection) {
+		if (!target) return this.sendReply('Please specify a user.');
+		var target = this.splitTarget(target);
+		var targetUser = this.targetUser;
+		if (!targetUser || !targetUser.connected) {
+			return this.sendReply('The user \'' + this.targetUsername + '\' does not exist.');
+		}
+		if (!this.can('mute', targetUser)) {
+			return false;
+		}
+		if (spamroom[targetUser]) {
+			return this.sendReply('That user\'s messages are already being redirected to the spamroom.');
+		}
+		spamroom[targetUser] = true;
+		Rooms.rooms['spamroom'].add('|raw|<b>' + this.targetUsername + ' was added to the spamroom list.</b>');
+		this.logModCommand(targetUser + ' was added to spamroom by ' + user.name);
+		return this.sendReply(this.targetUsername + ' was successfully added to the spamroom list.');
+	},
+
+	unspam: 'unspamroom',
+	unspammer: 'unspamroom',
+	unspamroom: function(target, room, user, connection) {
+		var target = this.splitTarget(target);
+		var targetUser = this.targetUser;
+		if (!targetUser || !targetUser.connected) {
+			return this.sendReply('The user \'' + this.targetUsername + '\' does not exist.');
+		}
+		if (!this.can('mute', targetUser)) {
+			return false;
+		}
+		if (!spamroom[targetUser]) {
+			return this.sendReply('That user is not in the spamroom list.');
+		}
+		for(var u in spamroom)
+			if(targetUser == Users.get(u))
+				delete spamroom[u];
+		Rooms.rooms['spamroom'].add('|raw|<b>' + this.targetUsername + ' was removed from the spamroom list.</b>');
+		this.logModCommand(targetUser + ' was removed from spamroom by ' + user.name);
+		return this.sendReply(this.targetUsername + ' and their alts were successfully removed from the spamroom list.');
+	},
+	me: function(target, room, user, connection) {
+		// By default, /me allows a blank message
+		if (target) target = this.canTalk(target);
+		if (!target) return;
+
+		var message = '/me ' + target;
+		// if user is not in spamroom
+		if (spamroom[user.userid] === undefined) {
+			// check to see if an alt exists in list
+			for (var u in spamroom) {
+				if (Users.get(user.userid) === Users.get(u)) {
+					// if alt exists, add new user id to spamroom, break out of loop.
+					spamroom[user.userid] = true;
+					break;
+				}
+			}
+		}
+
+		if (user.userid in spamroom) {
+			this.sendReply('|c|' + user.getIdentity() + '|' + message);
+			return Rooms.rooms['spamroom'].add('|c|' + user.getIdentity() + '|' + message);
+		} else {
+			return message;
+		}
+	},
+
+	mee: function(target, room, user, connection) {
+		// By default, /mee allows a blank message
+		if (target) target = this.canTalk(target);
+		if (!target) return;
+
+		var message = '/mee ' + target;
+		// if user is not in spamroom
+		if (spamroom[user.userid] === undefined) {
+			// check to see if an alt exists in list
+			for (var u in spamroom) {
+				if (Users.get(user.userid) === Users.get(u)) {
+					// if alt exists, add new user id to spamroom, break out of loop.
+					spamroom[user.userid] = true;
+					break;
+				}
+			}
+		}
+
+		if (user.userid in spamroom) {
+			this.sendReply('|c|' + user.getIdentity() + '|' + message);
+			return Rooms.rooms['spamroom'].add('|c|' + user.getIdentity() + '|' + message);
+		} else {
+			return message;
+		}
+	},
+	
      /*********************************************************
 	 *Bandi's Commands
     /*********************************************************/
-    
+    	pickrandom: function (target, room, user) {
+		if (!target) return this.sendReply('/pickrandom [option 1], [option 2], ... - Randomly chooses one of the given options.');
+		if (!this.canBroadcast()) return;
+		var targets;
+		if (target.indexOf(',') === -1) {
+			targets = target.split(' ');
+		} else {
+			targets = target.split(',');
+		};
+		var result = Math.floor(Math.random() * targets.length);
+		return this.sendReplyBox(targets[result].trim());
+	},
 
 	declare2: function(target, room, user) {
 		if (!target) return this.parse('/help declare');
