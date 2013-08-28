@@ -1,7 +1,8 @@
 var commands = exports.commands = {
      /*********************************************************
 	 *Bandi's Commands
-	 /*********************************************************/
+    /*********************************************************/
+    
 
 	declare2: function(target, room, user) {
 		if (!target) return this.parse('/help declare');
