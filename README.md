@@ -38,5 +38,6 @@ Staff
 
 Contributors
 - (Galaxy Nova) Art, Design,Tier help
-- Juanma Serrano [Joim] - Formats
+- Juanma Serrano [Joim] - 
+- [EliteFive] - Money Mod, Background
 - [The Immortal] - Formats(NOTE: TI is not tech support dont pm him :))
