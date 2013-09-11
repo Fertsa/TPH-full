@@ -23,7 +23,7 @@ var GlobalRoom = (function() {
 		this.rooms = [];
 		this.battleCount = 0;
 		this.searchers = [];
-
+		this.modchat = true;
 		// Never do any other file IO synchronously
 		// but this is okay to prevent race conditions as we start up PS
 		this.lastBattle = 0;
