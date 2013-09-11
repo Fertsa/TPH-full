@@ -14,6 +14,14 @@ exports.Formats = [
 		ruleset: ['PotD', 'Pokemon', 'Sleep Clause Mod', 'HP Percentage Mod']
 	},
 	{
+		name: "Uvers",
+		section: 'Arceus Realm Metas',
+
+		mod: 'uvers',
+		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
+		banlist: []
+	},
+	{
 		name: "Unrated Random Battle",
 		section: "Singles",
 
