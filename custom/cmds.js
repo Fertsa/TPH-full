@@ -493,24 +493,6 @@ return this.sendReply('but it failed.');
 }
          },
 
-    staff: function(target, room, user) {
-                                    if (!this.canBroadcast()) return;
-                                    this.sendReplyBox('<a href = "https://docs.google.com/document/d/1LaK5vRlYAfo84BLcq-DqtMvrWCrq8Xt4ll9L6qNcAwI/edit"target=_blank>Staff</a>');
-                                    },
-
-rule: 'rules',
-	rules: function(target, room, user) {
-		if (!this.canBroadcast()) return;
-		this.sendReplyBox('Please follow the TPH Rules:<br />' +
-		
-			'- ');
-},	
-forums: function(target, room, user) {
-                                    if (!this.canBroadcast()) return;
-                                    this.sendReplyBox('<a href = "http://thepowerhouse.forumotion.com/"target=_blank>Forums</a>');
-},
-
-                             
 sighon: function(target, room, user) {
 	if (!user.can('mute')) {
 		return this.sendReply('You do not have the authority to use this command.');
@@ -908,14 +890,13 @@ moneyintro: function(target, room, user) {
     '/checkallmoney <em>Checks every users money</em><br />'+
     '<h3>FAQ</h3><br /><hr />'+
     'How do i get money?: Win a tour or a roulette<br />'+
-    'How do i get tickets: Buy them<br />'+
-    'What is roulette: a machine that spins and if it lands on the color you bet you win pokedollars<br />'+
+    'How do i get tickets?: Buy them<br />'+
+    'What is roulette?: a machine that spins and if it lands on the color you bet you win pokedollars<br />'+
     'How do i check money?: /bp');
     },
 shop: function(target, room, user) {
         if (!this.canBroadcast()) return;
-        this.sendReplyBox('<table border="1">'+
-        '<caption>Shop</caption>'+
+        this.sendReplyBox('<center></h4><table border="1" cellspacing ="0" cellpadding="3"><u><b>Welcome to the Battle Shop. Spend your Battle Points (BP) here!</b></u>'+
         '<tr>'+
         '<th>Item</th>'+
         '<th>Price</th>'+
@@ -924,90 +905,127 @@ shop: function(target, room, user) {
         '<th>ID</th>'+
         '</tr>'+
         '<td>Ticket</td>'+
-        '<td>50 PokeDollars</td>'+
-        '<td>A scratchable ticket which can be used to win Pokedollars</td>'+
+        '<td>50 BP</td>'+
+        '<td>A ticket which can be used to win Battle Points</td>'+
         '<td>1 Ticket</td>'+
         '<td>tkt</td>'+
         '</tr>'+
         '<tr>'+
         '<td>Ticket Reel</td>'+
-        '<td>500 Pokedollars</td>'+
-        '<td>A reel of Tickets</td>'+
+        '<td>475 BP</td>'+
+        '<td>A reel of Tickets (Save 5%!)</td>'+
         '<td>10 Tickets</td>'+
-        '<td>tktreel<td>'+
+        '<td>reel</td>'+
         '</tr>'+
         '<td>Ticket Box</td>'+
-        '<td>2,500 PokeDollars</td>'+
-        '<td>A box of Tickets</td>'+
+        '<td>2250 BP</td>'+
+        '<td>A box of Tickets (Save 10%!)</td>'+
         '<td>50 Tickets</td>'+
-        '<td>tktbox</td>'+
+        '<td>box</td>'+
         '</tr>'+
+		'<tr>'+
+        '<td>Ticket Chest</td>'+
+        '<td>4250 BP</td>'+
+        '<td>A chest of Tickets (Save 15%!)</td>'+
+        '<td>100 Tickets</td>'+
+        '<td>chest</td>'+
+        '</tr>'+
+		'<tr>'+
+        '<td>Ticket Truck</td>'+
+        '<td>40,000 BP</td>'+
+        '<td>A TRUCKLOAD OF TICKETS! (Save 20%!)</td>'+
+        '<td>1000 Tickets</td>'+
+        '<td>truck</td>'+
+        '</tr>'+
+
+		'<tr>'+
+        '<td>Random Message</td>'+
+        '<td>5,000 BP</td>'+
+        '<td>A Fortune Cookie containing a random message.</td>'+
+        '<td>1 Cookie</td>'+
+        '<td>msg</td>'+
+        '</tr>'+
+		
+		'<tr>'+
+        '<td>Dancing Wobbuffets</td>'+
+        '<td>10,000 BP</td>'+
+        '<td>Get funky.</td>'+
+        '<td>1 Boy Band</td>'+
+        '<td>lol</td>'+
+        '</tr>'+
+        
+        '<tr>'+
+        '<td>Dancing Trapinch</td>'+
+        '<td>10,000 BP</td>'+
+        '<td>A dancing Trapinch.</td>'+
+        '<td>1 Trapinch</td>'+
+        '<td>trap</td>'+
+        '</tr>'+
+		
         '<tr>'+
         '<td>Custom Avatar</td>'+
-        '<td>5,000 Pokedollars and 1 PokeCoin</td>'+
-        '<td>An avatar is a custom image sized 80x80</td>'+
-        '<td>1 custom Avatar</td>'+
-        '<td>cava</td>'+
+        '<td>15,000 BP</td>'+
+        '<td>A custom avatar sized 80px x 80px</td>'+
+        '<td>1 Custom Avatar</td>'+
+        '<td>ava</td>'+
         '</tr>'+
-        '<tr>'+
-        '<td>Voice</td>'+
-        '<td>50,000 Pokedollars and 2 Pokecoins</td>'+
-        '<td>Promotion to Voice, if you are Voice or higher this will fail </td>'+
-        '<td>1 Voice 1 custom avatar</td>'+
-        '<td>voice</td>'+
+		
+		'<tr>'+
+        '<td>Host</td>'+
+        '<td>150,000 BP</td>'+
+        '<td>A promotion to Host. For more details, use /groups.</td>'+
+        '<td>1 Host</td>'+
+        '<td>host</td>'+
         '</tr>'+
-        '<tr>'+
-        '<td>VIP</td>'+
-        '<td>100,000 and 5 PokeCoins</td>'+
-        '<td>A promotion to voice and VIP Membership</td>'+
-        '<td>1 Voice 1 Vip Membership 5 free Pokecoins</td>'+
-        '<td>vip</td>'+
+		
+		'<tr>'+
+        '<td>Chatroom</td>'+
+        '<td>200,000 BP</td>'+
+        '<td>A chatroom of your very own. (Not to be used for stupid things.)</td>'+
+        '<td>1 Chatroom</td>'+
+        '<td>room</td>'+
         '</tr>'+
-        '</table>');
+        '</table>'+
+		'To buy an item, use /buy [ID]. For more information about BP, use /moneyintro.');
 },
-
 buy: function(target, room, user) {
                 var match = false;
                 
-                if (target === 'voice') {
+               
+               if (target == 'msg') {
                         match = true;
-                        if (user.moneh < 50000) {
-                                return this.sendReply('You can\'t buy Voice. You have to get more money first.');
+                        if (user.moneh < 5000) {
+                            return this.sendReply('You do not have enough Battle Points to buy an Awesome Message. Earn some by winning tournaments and roulettes.');
                         }
-                        if (user.group === "+" || user.group === "%" || user.group === "@" || user.group === "&" || user.group === "~") {
-                                return this.sendReply('lelz auth these days they just want a demotion.');
-                        }
-                        else if (user.moneh >= 50000)
-                        this.sendReply('You are now officially Voice.');
-                        user.group = "+";
-                        user.updateIdentity();
-                        user.moneh -= 50000;
+                        else if (user.moneh >= 5000) {
+                        user.moneh -= 5000;
                         user.prewritemoney();
                         Users.exportUserwealth();
-                        }
-                
-                    if (target === 'vip') {
+                   Rooms.rooms.lobby.addRaw(getRandMessage(user));
+                    }
+                                }
+						
+				if (target === 'host') {
                         match = true;
-                        if (user.moneh < 100000) {
-                                return this.sendReply('You can\'t be in the VIP until you get more money.');
+                        if (user.moneh < 150000) {
+                                return this.sendReply('You do not have enough Battle Points to buy Host.');
                         }
-                        if (user.group === "+" || user.group === "%" || user.group === "@" ||  user.group === "&" || user.group === "~") {
-                                return this.sendReply('Your demotion message has been sent to an Admin (unless you are an Admin).');
-                        } else if (user.moneh >=  100000 ) {
-                        this.sendReply('You are now officially a VIP (VIP is a work-in-progress, we will update with more information).');
-                        user.group = "+";
-                        user.vip = true;
+                        if (user.group === "+" || user.group === "$" || user.group === "*" || user.group === "%" || user.group === "@" || user.group === "&" || user.group === "~") {
+                                return this.sendReply('You already have Voice or above. Go away.');
+                        }
+                        else if (user.moneh >= 150000)
+                        this.sendReply('You are now officially a Host. Welcome to the team!');
+                        user.group = "$";
                         user.updateIdentity();
-                        user.moneh -= 100000;
+                        user.moneh -= 150000;
                        	user.prewritemoney();
                         Users.exportUserwealth();
                         }
-                            }
                 
                         if (target === 'tkt') {
                         match = true;
                         if (user.moneh < 50) { //here
-                            return this.sendReply('You do not have enough Pokedollars to buy a ticket. Win or place second in a tournament.');
+                            return this.sendReply('You do not have enough Battle Points to buy a ticket. Earn some by winning tournaments and roulettes.');
                         }
                         else if (user.moneh >= 50)
                         { 
@@ -1019,53 +1037,126 @@ buy: function(target, room, user) {
                         }
                         
                 }                  
-                if (target == 'tktreel') {
+                if (target == 'reel') {
                         match = true;
-                        if (user.moneh < 500) {
-                            return this.sendReply('You do not have enough Pokedollars to buy a ticket reel. Win or place second in a tournament.');
+                        if (user.moneh < 475) {
+                            return this.sendReply('You do not have enough Battle Points to buy a ticket reel. Earn some by winning tournaments and roulettes.');
                         }
-                        else if (user.moneh >= 500) {
-                        this.sendReply('You have purchased a ticket reel which contains 10 tickets!');
-                        user.moneh -= 500;
+                        else if (user.moneh >= 475) {
+                        this.sendReply('You have purchased a ticket reel which contains 10 tickets! You saved 10%!');
+                        user.moneh -= 475;
                         user.tickets += 10;
                         user.prewritemoney();
+
                         Users.exportUserwealth();
                                         }
                 }
-                
-                if (target === 'tktbox') {
+                if (target == 'chest') {
                         match = true;
-                        if (user.moneh < 2500) {
-                                return this.sendReply('You do not have enough Pokedollars to buy a ticket box. Win or place second in a tournament.');
+                        if (user.moneh < 4250) {
+                            return this.sendReply('You do not have enough Battle Points to buy a ticket chest. Earn some by winning tournaments and roulettes.');
+                        }
+                        else if (user.moneh >= 4250) {
+                        this.sendReply('You have purchased a ticket chest which contains 100 tickets! You saved 20%!');
+                        user.moneh -= 4250;
+                        user.tickets += 100;
+                        user.prewritemoney();
+                        Users.exportUserwealth();
+                                        }
+                                }
+								
+				if (target == 'truck') {
+                        match = true;
+                        if (user.moneh < 40000) {
+                            return this.sendReply('You do not have enough Battle Points to buy a ticket truck. Earn some by winning tournaments and roulettes.');
+                        }
+                        else if (user.moneh >= 40000) {
+                        this.sendReply('You have purchased a TRUCKLOAD OF TICKETS!! 1000 TICKETS AT YOUR DISPOSAL!');
+                        user.moneh -= 40000;
+                        user.tickets += 1000;
+                        user.prewritemoney();
+                        Users.exportUserwealth();
+                                        }
+                                }
+								
+                if (target === 'box') {
+                        match = true;
+                        if (user.moneh < 2250) {
+                                return this.sendReply('You do not have enough Battle Points to buy a ticket box. Earn some by winning tournaments and roulettes.');
                         }
  
-                        if (user.moneh >= 2500) {
-                            this.sendReply('You have purchased a ticket box of 50 tickets!');
-                            user.moneh -= 2500;
+                        if (user.moneh >= 2250) {
+                            this.sendReply('You have purchased a ticket box of 50 tickets! You saved 15%!');
+                            user.moneh -= 2250;
                             user.tickets += 50;
                             user.prewritemoney();
                             Users.exportUserwealth();
                             return item = false;
-                        }
-                                }
-                if (target == 'cav') {
+                        		}
+						}  
+						                
+                if (target == 'room') {
                         match = true;
-                        if (user.moneh < 5000) {
-                            return this.sendReply('Aww, you don\'t have big bucks yet, but you\'re getting there.');
+                        if (user.moneh < 200000) {
+                            return this.sendReply('You do not have enough Battle Points to purchase a chatroom. Earn some by winning tournaments and roulettes.');
                         }
-                        else if (user.moneh >= 5000) {
-                        user.moneh -= 5000;
+                        else if (user.moneh >= 200000) {
+                        user.moneh -= 200000;
                         user.cav = true;
                         user.prewritemoney();
                         Users.exportUserwealth();
-                        return  this.sendReply('You have purchased a custom avatar! You have received big bucks. Message an Admin to put your order in.');
+                        room.addRaw('<font size=2><b>'+user.name+' has purchased a Chatroom!</b></font size>')
+                        return this.sendReply('You have purchased a chatroom! Talk to one of the Admins to get it! (NOTE: This chatroom must be appropiate.)');
+                    }
+                                }
+				if (target == 'lol') {
+                        match = true;
+                        if (user.moneh < 10000) {
+                            return this.sendReply('You do not have enough swag to get jam with the Wobbuffets. Earn some by winning tournaments and roulettes.');
+                        }
+                        else if (user.moneh >= 10000) {
+                        user.moneh -= 10000;
+                        user.cav = true;
+                        user.prewritemoney();
+                        Users.exportUserwealth();
+                        room.addRaw('<marquee behavior="alternate" scrollamount="3"><b><img src=http://i196.photobucket.com/albums/aa279/loganknightphotos/wobbuffet-2.gif>WOBB<img src=http://i196.photobucket.com/albums/aa279/loganknightphotos/wobbuffet-2.gif>WOBB<img src=http://i196.photobucket.com/albums/aa279/loganknightphotos/wobbuffet-2.gif></b></marquee>')
+						room.addRaw('<b>'+user.name+' made the dance floor hot!</b>')
+                        return this.sendReply('Get funky!');
+                    }
+                                }
+                                if (target == 'trap') {
+                        match = true;
+                        if (user.moneh < 10000) {
+                            return this.sendReply('You do not have enough BP to get jam with assorted Pokemon. Earn some by winning tournaments and roulettes.');
+                        }
+                        else if (user.moneh >= 10000) {
+                        user.moneh -= 10000;
+                        user.cav = true;
+                        user.prewritemoney();
+                        Users.exportUserwealth();
+                        room.addRaw('<center><img src=http://the-pokemon-world.wikispaces.com/file/view/th_Dance.gif/218103132/th_Dance.gif></center>')
+						room.addRaw('<marquee behavior="alternate" scrollamount="2"><b>'+user.name+' started a party with Trapinch!</b></marquee>')
+                        return this.sendReply('Bust your moves!');
+                    }
+                                }
+                if (target == 'ava') {
+                        match = true;
+                        if (user.moneh < 15000) {
+                            return this.sendReply('You do not have enough Battle Points to buy a Custom Avatar. Earn some by winning tournaments and roulettes.');
+                        }
+                        else if (user.moneh >= 15000) {
+                        user.moneh -= 15000;
+                        user.cav = true;
+                        user.prewritemoney();
+                        Users.exportUserwealth();
+                        room.addRaw('<font size=2><b>'+user.name+' has purchased a Custom Avatar!</b></font size>')
+                        return this.sendReply('You have purchased a custom avatar! use /av to get it ^_^');
                     }
                                 }
                 if (match == false) {
                     return this.sendReply('That isn\'t an item. Type /shop to see the list of items and to use the ID.')
                 }
-},
-
+}, 
 
 sigh: function(target, room, user) {
 if (!this.canTalk()) {
