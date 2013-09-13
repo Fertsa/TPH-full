@@ -510,5 +510,5 @@ exports.BattleStatuses = {
 			this.add('-weather', 'none');
 		}
 	}
-	
+	}
 };
