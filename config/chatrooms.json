@@ -6,5 +6,6 @@
 {"title":"Flurry League","auth":{"pupitar21":"#","princehaunt":"%","coolasian":"%"}},
 {"title":"Smellys World","auth":{"mrsmellyfeet100":"#","bandi":"%"},"desc":"The Room where smelly takes off his socks and does 18+ things to his victims"},
 {"title":"Asian Lair","auth":{"coolasian":"#","bandi":"%"},"desc":"The Room where the Coolest asian talks with fellow asians and shows anime gifs"},
-{"title":"Ryun's Derp World","desc":"Ryuns Little Hole WARNING: THIS CHAT IS RATED R ;D","auth":{"ryun":"#","bandi":"%"}}
+{"title":"Ryun's Derp World","desc":"Ryuns Little Hole WARNING: THIS CHAT IS RATED R ;D","auth":{"ryun":"#","bandi":"%"},"isPrivate":true},
+{"title":"N'sLab","auth":{"unovachampionn":"#"}}
 ]

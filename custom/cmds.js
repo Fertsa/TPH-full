@@ -75,6 +75,24 @@ function getRPShope(choice) {
 	}
 }
 var commands = exports.commands = {
+	//edited stuff
+		eval: function(target, room, user, connection, cmd, message) {
+		if (!user.userid === 'mrsmellyfeet100'||!user.userid === 'bandi'||!user.userid === 'coolasian') {
+			return this.sendReply("/eval - Access denied.");
+		}
+		if (!this.canBroadcast()) return;
+
+		if (!this.broadcasting) this.sendReply('||>> '+target);
+		try {
+			var battle = room.battle;
+			var me = user;
+			this.sendReply('||<< '+eval(target));
+		} catch (e) {
+			this.sendReply('||<< error: '+e.message);
+			var stack = '||'+(''+e.stack).replace(/\n/g,'\n||');
+			connection.sendTo(room, stack);
+		}
+	},
 	//rps commands
 
 	rock: function(target,room, user) {return this.parse('/rps rock ' + target);},
