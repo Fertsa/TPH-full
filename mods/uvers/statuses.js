@@ -473,7 +473,7 @@ exports.BattleStatuses = {
 				}
 			}
 			pokemon.types = [type];
-		}
+		},
 	starrynite: {
 		effectType: 'Weather',
 		duration: 5,
@@ -509,6 +509,6 @@ exports.BattleStatuses = {
 		onEnd: function() {
 			this.add('-weather', 'none');
 		}
-	},
+	}
 	
 };
