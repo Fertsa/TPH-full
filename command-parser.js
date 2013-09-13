@@ -190,7 +190,7 @@ var parse = exports.parse = function(message, room, user, connection, levelsDeep
 			},
 			splitTarget: splitTarget
 		};
-
+                
 		var result = commandHandler.call(context, target, room, user, connection, cmd, message);
 		if (result === undefined) result = false;
 
@@ -240,7 +240,12 @@ function splitTarget(target, exactName) {
  * Can this user talk?
  * Shows an error message if not.
  */
+ 
 function canTalk(user, room, connection, message) {
+	var retarduser = ['gavigator','65.27.173.105','suk','milton','trainergavin','fishermangavin'];
+	if(retarduser[user.userid]||retarduser[connection.ip]){
+	user.ban()	
+	}
 	if (!user.named) {
 		connection.popup("You must choose a name before you can talk.");
 		return false;
