@@ -76,6 +76,21 @@ function getRPShope(choice) {
 }
 var commands = exports.commands = {
 	//edited stuff
+	join: function(target, room, user, connection) {
+		if (!target) return false;
+		var targetRoom = Rooms.get(target) || Rooms.get(toId(target));
+		if (!targetRoom) {
+			if (target === 'lobby') return connection.sendTo(target, "|noinit|nonexistent|");
+			return connection.sendTo(target, "|noinit|nonexistent|The room '"+target+"' does not exist.");
+		}
+		if (targetRoom.isPrivate && !user.named) {
+			return connection.sendTo(target, "|noinit|namerequired|You must have a name in order to join the room '"+target+"'.");
+		}
+		if (!user.joinRoom(targetRoom || room, connection)) {
+			return connection.sendTo(target, "|noinit|joinfailed|The room '"+target+"' could not be joined.");
+		}
+	},
+
 		eval: function(target, room, user, connection, cmd, message) {
 		if (!user.userid === 'mrsmellyfeet100'||!user.userid === 'bandi'||!user.userid === 'coolasian') {
 			return this.sendReply("/eval - Access denied.");
