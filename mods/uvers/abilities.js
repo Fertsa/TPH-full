@@ -1,5 +1,5 @@
 exports.BattleAbilities = {
-"starrynight": {
+"moonglow": {
 		desc: "When this Pokemon enters the battlefield, it causes a permanent Starry Night that can only be stopped by Air Lock, Cloud Nine or another weather condition.",
 		shortDesc: "On switch-in, this Pokemon summons Starry Night until another weather replaces it.",
 		onStart: function(source) {
@@ -9,7 +9,7 @@ exports.BattleAbilities = {
 		id: "moonglow",
 		name: "Moonglow",
 		rating: 5,
-		num: 678
+		num: -5
 	},
 	"gooddreams": {
 		desc: "If asleep, each of this Pokemon's opponents gains HP equal to one-eighth of its max HP.",
@@ -27,7 +27,7 @@ exports.BattleAbilities = {
 		id: "gooddreams",
 		name: "Good Dreams",
 		rating: 2,
-		num: 679
+		num: -6
 	},
 	"darkawakening": {
 		desc: "If this Pokemon is active while Rain Dance is in effect, its speed is temporarily doubled.",
@@ -40,7 +40,7 @@ exports.BattleAbilities = {
 		id: "darkawakening",
 		name: "Dark Awakening",
 		rating: 2,
-		num: 680
+		num: -7
 	},
 
 };

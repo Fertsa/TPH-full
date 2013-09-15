@@ -8,7 +8,7 @@ body{
 	color:#fff;
 	font-size:11pt;
 	font-family:Verdana,Helvetica,Arial,sans-serif;
-	background:#84FF7B url("http://i.imgur.com/kx70ear.jpg") no-repeat fixed left bottom
+	background: url("http://i.imgur.com/6Rd5gHL.jpg?2") no-repeat fixed left bottom
 }
 
 .mainmenufooter {
@@ -19,7 +19,7 @@ body{
 }
 .mainmenufooter small {
 	font-size: 9pt;
-}
+} 
 .mainmenufooter a {
 	text-decoration: underline;
 	color: #6688CC;
@@ -40,7 +40,7 @@ body{
 }
 .pm-window h3 {
 	background: rgba(248,248,248,.8);
-	color: #777777;
+	color: #FF4446;
 	margin: 0;
 	padding: 2px 5px;
 	font-size: 11pt;
@@ -50,13 +50,13 @@ body{
 	cursor: pointer;
 }
 .pm-window h3:hover {
-	color: #333333;
+	color: ##FF4446;
 }
 .pm-window h3 .closebutton {
 	float: right;
 }
 .pm-window h3 small {
-	color: #888888;
+	color: ##FF4446;
 	font-weight: normal;
 	vertical-align: 1px;
 }
@@ -87,7 +87,7 @@ body{
 .pm-window.focused h3,
 .pm-window.focused .pm-log,
 .pm-window.focused .pm-log-add {
-	border-color: #555555;
+	border-color: ##FF4446;
 }
 .pm-window.focused h3,
 .pm-window.focused h3:hover {

